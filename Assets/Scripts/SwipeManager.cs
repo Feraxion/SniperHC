@@ -78,10 +78,11 @@ public class SwipeManager : MonoBehaviour
             currentSwipe.Normalize();
 
             ////swipe upwards
-            //if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
-            //{
-            //    Debug.Log("up swipe");
-            //}
+            if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
+            {
+                slowMotion.ReverseMotion();
+                Debug.Log("up swipe");
+            }
             //swipe down
 
             if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
