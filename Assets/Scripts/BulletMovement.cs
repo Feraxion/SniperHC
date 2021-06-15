@@ -9,7 +9,7 @@ public class BulletMovement : MonoBehaviour
     [Header("Speed Settings")]
     public float movementSpeed;
     public float controlSpeed;
-
+    public bool slowMotion;
 
     //Touch settings
     [Header("Touch Settings")]
@@ -18,27 +18,34 @@ public class BulletMovement : MonoBehaviour
 
     public GameObject scopeCanvas;
     public GameObject failCanvas;
+    public float timeScale;
 
 
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        Application.targetFrameRate = 30;
     }
 
     private void Update()
     {
         GetInput();
+        transform.Translate(Vector3.forward  * movementSpeed , Space.World) ;
 
         
+
     }
     private void FixedUpdate()
     {
         if (isTouching)
         {
             DisableScope();
-            m_Rigidbody.velocity = Vector3.forward * movementSpeed;
+            //m_Rigidbody.velocity = (Vector3.forward * movementSpeed) * ( Time.timeScale / 1);
+           // transform.Translate(Vector3.forward  * movementSpeed * (Time.timeScale /1) , Space.World) ;
         }
+        
+
     }
 
     private void OnCollisionEnter(Collision collision)

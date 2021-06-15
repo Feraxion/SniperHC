@@ -98,7 +98,7 @@ public class SwipeManager : MonoBehaviour
             //}
             ////swipe right
             //if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-            //{
+            //{`    
             //    Debug.Log("right swipe");
             //}
         }
