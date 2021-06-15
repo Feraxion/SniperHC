@@ -41,6 +41,9 @@ public class RagdollTrigger : MonoBehaviour
 
     Collider[] ragDollColliders;
     Rigidbody[] limbsRigidBodies;
+
+    public GameObject endGameParticle;
+    public GameObject winCanvas;
     
     private void Start()
     {
@@ -91,7 +94,12 @@ public class RagdollTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             RagdollModeOn();
-           // DoRagdoll(true);
+            foreach (Transform child in endGameParticle.transform)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
+            winCanvas.SetActive(true);
+            // DoRagdoll(true);
         }
     }
 

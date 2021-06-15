@@ -17,6 +17,7 @@ public class BulletMovement : MonoBehaviour
     //Testing Inputs
 
     public GameObject scopeCanvas;
+    public GameObject failCanvas;
 
 
 
@@ -45,6 +46,10 @@ public class BulletMovement : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            failCanvas.SetActive(true);
         }
     }
     void GetInput()
