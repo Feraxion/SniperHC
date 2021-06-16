@@ -20,6 +20,12 @@ public class BulletMovement : MonoBehaviour
     public GameObject failCanvas;
     public float timeScale;
 
+    //shattered target
+    public GameObject shatteredObject;
+
+    //ScoreUI
+    public Text scoreText;
+    public int score;
 
 
     private void Awake()
@@ -32,9 +38,7 @@ public class BulletMovement : MonoBehaviour
     {
         GetInput();
         transform.Translate(Vector3.forward  * movementSpeed , Space.World) ;
-
-        
-
+        scoreText.text = score.ToString();
     }
     private void FixedUpdate()
     {
@@ -57,6 +61,12 @@ public class BulletMovement : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             failCanvas.SetActive(true);
+        }
+        if (collision.gameObject.tag == "TargetObject")
+        {
+            shatteredTarget();
+            Destroy(collision.collider.gameObject);
+            score++;
         }
     }
     void GetInput()
@@ -86,5 +96,10 @@ public class BulletMovement : MonoBehaviour
     void DisableScope()
     {
         scopeCanvas.SetActive(false);
+    }
+
+    void shatteredTarget()
+    {
+        Instantiate(shatteredObject, transform.position, transform.rotation);
     }
 }
