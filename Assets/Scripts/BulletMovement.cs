@@ -38,7 +38,7 @@ public class BulletMovement : MonoBehaviour
     {
         GetInput();
         transform.Translate(Vector3.forward  * movementSpeed , Space.World) ;
-        scoreText.text = score.ToString();
+        //scoreText.text = score.ToString();
     }
     private void FixedUpdate()
     {

@@ -28,7 +28,7 @@ public class ObstacleRotator : MonoBehaviour
     {
         //GO = gameObject.transform;
         //GO.transform.rotation.x  += 5f;
-        
+        Debug.Log(Time.timeScale);
         if (xRotate)
         {
             gameObject.transform.Rotate(RotateSpeed,0f,0f);
