@@ -11,7 +11,7 @@ public class ObstacleRotator : MonoBehaviour
 
     
     [SerializeField]
-    private int RotateSpeed;
+    private float RotateSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,19 +31,20 @@ public class ObstacleRotator : MonoBehaviour
         Debug.Log(Time.timeScale);
         if (xRotate)
         {
-            gameObject.transform.Rotate(RotateSpeed,0f,0f);
+            gameObject.transform.Rotate(RotateSpeed * Time.deltaTime,0f,0f);
 
         }
-        
+
         if (yRotate)
         {
-            gameObject.transform.Rotate(0,RotateSpeed,0);
+            gameObject.transform.Rotate(0,RotateSpeed* Time.deltaTime,0);
 
         }
 
         if (zRotate)
         {
-            gameObject.transform.Rotate(0,0,RotateSpeed);
+            gameObject.transform.Rotate(0,0,RotateSpeed* Time.deltaTime);
 
-        }    }
+        }
+    }
 }
