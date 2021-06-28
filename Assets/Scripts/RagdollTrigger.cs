@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RagdollTrigger : MonoBehaviour
 {
+
+    public GameManager gameMng;
     //public Collider mainCollider;
     //public Collider[] allColliders;
     //private void Awake()
@@ -43,7 +45,7 @@ public class RagdollTrigger : MonoBehaviour
     Rigidbody[] limbsRigidBodies;
 
     public GameObject endGameParticle;
-    public GameObject winCanvas;
+    //public GameObject winCanvas;
     
     private void Start()
     {
@@ -98,7 +100,8 @@ public class RagdollTrigger : MonoBehaviour
             {
                 child.GetComponent<ParticleSystem>().Play();
             }
-            winCanvas.SetActive(true);
+            //winCanvas.SetActive(true);
+            gameMng.playerState = GameManager.PlayerState.Finish;
             // DoRagdoll(true);
         }
     }

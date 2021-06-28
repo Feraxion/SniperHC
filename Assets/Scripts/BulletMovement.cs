@@ -26,19 +26,23 @@ public class BulletMovement : MonoBehaviour
     //ScoreUI
     public Text scoreText;
     public int score;
-
+    public GameManager gameMng;
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
     {
-        GetInput();
-        transform.Translate(Vector3.forward  * movementSpeed , Space.World) ;
-        //scoreText.text = score.ToString();
+        if (gameMng.playerState == GameManager.PlayerState.Playing)
+        {
+            GetInput();
+            transform.Translate(Vector3.forward  * movementSpeed , Space.World) ;
+            //scoreText.text = score.ToString();
+        }   
+        
     }
     private void FixedUpdate()
     {
@@ -60,7 +64,7 @@ public class BulletMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "Obstacle")
         {
-            failCanvas.SetActive(true);
+            gameMng.playerState = GameManager.PlayerState.Died;
         }
         if (collision.gameObject.tag == "TargetObject")
         {
